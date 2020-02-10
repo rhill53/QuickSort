@@ -21,17 +21,6 @@ public class Main {
             System.out.println("An array of " + Integer.toString(n) + " generated successfully!\n\n");
         }
 
-//        int workingArry[] = {};
-//
-//        try {
-//            workingArry = RandomArray.duplicateArray(originalArry);
-//        } catch (Exception e) {
-//            System.out.println("Failed to duplicate array\n\n");
-//        } finally {
-////            RandomArray.printArray(originalArry);
-////            RandomArray.printArray(workingArry);
-//        }
-
         try {
             RandomArray.writeArrToFile("StartArray", originalArry);
         } catch (Exception e) {
