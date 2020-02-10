@@ -6,7 +6,7 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
-        int[] originalArry = RandomArray.generateArray(1000);
+        int[] originalArry = RandomArray.generateArray(1000000);
         int n = originalArry.length;
         int writeNum = 1;
         Scanner input = new Scanner(System.in);
