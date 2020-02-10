@@ -8,21 +8,21 @@ public class Sort
       arr[] --> Array to be sorted,
       low  --> Starting index,
       high  --> Ending index */
-    static void sort(int arr[], int partStart, int partEnd, String partition, String pivot, int minPartSize) {
+    static void sort(int arr[], int partStart, int partEnd, String partition, String pivotType, int minPartSize) {
         if ((partStart < partEnd) && ((partEnd - partStart) > minPartSize)) {
             /* pi is partitioning index, arr[pi] is
               now at right place */
-            int pi = Partition.partitionHandler(arr, partStart, partEnd, partition, pivot);
+            int pi = Partition.partitionHandler(arr, partStart, partEnd, partition, pivotType);
 
             // Recursively sort elements before
             // partition and after partition
-            if (partition == "Lomuto") {
-                sort(arr, partStart, pi - 1, partition, pivot, minPartSize);
-                sort(arr, pi + 1, partEnd, partition, pivot, minPartSize);
+            if (partition == "LOMUTO") {
+                sort(arr, partStart, pi - 1, partition, pivotType, minPartSize);
+                sort(arr, pi + 1, partEnd, partition, pivotType, minPartSize);
             }
-            if (partition == "Hoare") {
-                sort(arr, partStart, pi, partition, pivot, minPartSize);
-                sort(arr, pi +1, partEnd, partition, pivot, minPartSize);
+            if (partition == "HOARE") {
+                sort(arr, partStart, pi, partition, pivotType, minPartSize);
+                sort(arr, pi +1, partEnd, partition, pivotType, minPartSize);
             }
         }
         insertionSort(arr);
@@ -32,18 +32,19 @@ public class Sort
 
     static void insertionSort(int arr[])
     {
-        int i = 1;
-        while (i < arr.length) {
-            int x = arr[i];
+        int n = arr.length;
+        for (int i = 1; i < n; ++i) {
+            int key = arr[i];
             int j = i - 1;
-            while ((j >= 0) && (arr[j] > x) && (j < arr.length - 1)) {
+
+            /* Move elements of arr[0..i-1], that are
+               greater than key, to one position ahead
+               of their current position */
+            while (j >= 0 && arr[j] > key) {
                 arr[j + 1] = arr[j];
-                j++;
+                j = j - 1;
             }
-            if (j + 1 < arr.length)
-                arr[j + 1] = x;
-            if (i + 1 <= arr.length)
-                i++;
+            arr[j + 1] = key;
         }
     }
 

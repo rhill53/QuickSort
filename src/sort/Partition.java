@@ -3,9 +3,9 @@ package sort;
 public class Partition {
     static int partitionHandler(int arr[], int partStart, int partEnd, String partition, String pivot){
         switch (partition){
-            case "Hoare":
+            case "HOARE":
                 return hoarePartition(arr, partStart, partEnd, pivot);
-            case "Lomuto":
+            case "LOMUTO":
                 return lomutoPartition(arr, partStart, partEnd, pivot);
         }
         return 0;
@@ -13,17 +13,18 @@ public class Partition {
 
     static int hoarePartition(int arr[], int partStart, int partEnd, String pivot){
         int piv = pivot(arr, partStart, partEnd, pivot);
-        int i = partStart - 1;
-        int j = partEnd + 1;
+        int i = partStart;
+        int j = partEnd;
         while (true)
         {
             do{
                 i++;
             }
-            while (arr[i] < piv);
+            while (arr[i] < piv && i < arr.length);
             do{
                 j--;
-            } while (arr[j] > piv);
+            } while (arr[j] > piv && j > 0);
+
             if (i >= j){
                 return j;
             }
@@ -52,11 +53,11 @@ public class Partition {
 
     static int pivot(int arr[], int start, int end, String type){
         switch (type){
-            case "median":
+            case "MEDIAN":
                 return ((start + end) / 2);
-            case "left":
+            case "LEFT":
                 return (start);
-            case "right":
+            case "RIGHT":
                 return (end);
         }
         return 0;
