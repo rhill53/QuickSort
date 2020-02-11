@@ -1,12 +1,10 @@
 package sort;
 
-import java.io.Console;
-import java.lang.reflect.Array;
 import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
-        int[] originalArry = RandomArray.generateArray(1000000);
+        int[] originalArry = RandomArray.generateArray(100000);
         int n = originalArry.length;
         int writeNum = 1;
         Scanner input = new Scanner(System.in);
@@ -65,7 +63,7 @@ public class Main {
             String wrt = input.nextLine().toUpperCase();
             if(wrt.contains("Y")) {
                 try {
-                    RandomArray.writeArrToFile(sort + "_" + pivot + "_" + Integer.toString(minPartSize) + "_" + "run" + writeNum + "_" + (Long.toString(finalTime - initTime)), sorted);
+                    RandomArray.writeArrToFile(sort + "_" + pivot + "_" + Integer.toString(minPartSize) + "_" + "Run" + writeNum + "_" + (Long.toString(finalTime - initTime)) + "ns", sorted);
                 } catch (Exception e) {
                     System.out.println("IO Exception writing array to file.\n\n");
                 } finally {
